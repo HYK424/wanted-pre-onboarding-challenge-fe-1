@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # :: 원티드 프리온보딩 챌린지 프론트엔드 코스 사전과제 안내 & API
 
 # 1-1) 사전과제 진행 가이드
@@ -234,6 +233,3 @@
   "token": "eyJhbGciOiJIUzI1NiJ9.YXNkZkBhc2RmYXNkZi5jb20.h-oLZnV0pCeNKa_AM3ilQzerD2Uj7bKUn1xDft5DzOk"
 }
 ```
-=======
-# wanted-pre-onboarding-challenge-fe-1
->>>>>>> 4d65ecfd236b6ed46e663e0022e071e8bcbf8f2b
