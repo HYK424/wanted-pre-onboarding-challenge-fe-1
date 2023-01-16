@@ -10,7 +10,6 @@ const SignUp = () => {
     formState: { errors, isDirty, isValid },
   } = useForm({ mode: "onChange" });
 
-
   const onValid = async (data: FieldValues) => {
     try {
       const res = await axios.post("http://localhost:8080/users/create", data);

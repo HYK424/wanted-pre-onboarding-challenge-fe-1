@@ -11,26 +11,27 @@ const Todos = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    getTodoList();
+  }, []);
+
   const getTodoList = async () => {
     const res = await get();
     dispatch(setList(res.data));
   };
 
   const handleDelete = async (id: string) => {
-    await del(id);
+    await del();
     const res = await get();
     dispatch(setList(res.data));
   };
 
   const handlePut = async (id: string) => {
-    const res = await get(id);
+    const res = await get();
     dispatch(setTodo(res.data));
     navigate(`/todo/${id}`);
   };
 
-  useEffect(() => {
-    getTodoList();
-  }, []);
 
   return (
     <div>

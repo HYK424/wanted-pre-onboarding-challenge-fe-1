@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setList } from "./todoSlice";
 import { useNavigate } from 'react-router-dom';
-import { get, post } from "../../Api";
+import { get, post as createTodo } from "../../Api";
+import { token } from "../../lib/token";
 
 const PostTodo = () => {
   const { register, watch } = useForm({ mode: "onChange" });
@@ -18,7 +19,7 @@ const PostTodo = () => {
     };
     
     try {
-      await post('',data)
+      await createTodo(data)
       const res=await get();
       dispatch(setList(res.data));
     } catch (err) {
@@ -28,7 +29,7 @@ const PostTodo = () => {
   };
 
 const logOut=()=>{
-  localStorage.removeItem('login');
+ token().removeToken();
   navigate('/auth');
 }
 

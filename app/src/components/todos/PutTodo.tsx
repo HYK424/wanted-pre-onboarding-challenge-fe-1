@@ -1,16 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import { Data, TodoData } from "../type/todoType";
+import { Data, TodoData } from "../../type/todoType";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { RootState } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setList } from "../components/todos/todoSlice";
-import { ContentInput, TitleInput } from "../components/todos/todos-styled";
+import { setList } from "./todoSlice";
+import { ContentInput, TitleInput } from "./todos-styled";
 import { useForm } from "react-hook-form";
-import { get, put } from "../Api";
-const Todo = () => {
+import { get, put } from "../../Api";
+const PutTodo = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const todo = useSelector((state: RootState) => state.todoSlice.todo);
@@ -18,13 +18,13 @@ const Todo = () => {
   const { register, watch } = useForm({ mode: "onChange" });
 
   const handleSubmit = async () => {
-    const data : Data = {
+    const data: Data = {
       title: watch("title"),
       content: watch("content"),
     };
     const token = localStorage.getItem("login");
-    await put(id,data);
-    const res=await get();
+    await put( data);
+    const res = await get();
     dispatch(setList(res.data));
     navigate("/");
   };
@@ -55,4 +55,4 @@ const Todo = () => {
   );
 };
 
-export default Todo;
+export default PutTodo;

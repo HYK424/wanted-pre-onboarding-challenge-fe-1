@@ -3,6 +3,7 @@ import { FieldErrors, FieldValues, useForm } from "react-hook-form";
 import { LoginForm, LoginInput } from "./login-styled";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { token } from "../../lib/token";
 
 const Login = () => {
   const {
@@ -15,8 +16,8 @@ const Login = () => {
   const onValid = async (data: FieldValues) => {
     try {
       const res = await axios.post("http://localhost:8080/users/login", data);
-      localStorage.setItem("login", res.data.token);
-      if (localStorage.getItem("login")) {
+      token(res.data.token).setToken();
+      if (token().getToken()) {
         alert("로그인이 완료되었습니다");
         navigate("/");
       } else {
