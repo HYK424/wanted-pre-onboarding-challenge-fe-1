@@ -1,8 +1,7 @@
 import React from "react";
 import { FieldErrors, FieldValues, useForm } from "react-hook-form";
-import { LoginForm, LoginInput } from "./login-styled";
+import { LoginForm, LoginInput } from "./style/login-styled";
 import axios from "axios";
-
 const SignUp = () => {
   const {
     register,

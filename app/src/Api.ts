@@ -1,48 +1,48 @@
 import axios from "axios";
+import api from "./lib/axios";
 import { Data } from "./type/todoType";
 
-const token = localStorage.getItem("login");
-const endpoint = `http://localhost:8080/todos`;
-
-export const get = async () => {
+const endpoint = `/todos`;
+//get
+export const getTodo = async () => {
   try {
-    const response = await axios.get(endpoint, {
-      headers: { Authorization: `${token}` },
-    });
-
+    const response = await api.get(endpoint);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+export const getTodoById = async (id: string | undefined) => {
+  try {
+    const response = await api.get(`${endpoint}/${id}`);
     return response.data;
   } catch (error: any) {
     throw new Error(error.message);
   }
 };
 
-export const post = async ( data: Data) => {
+//post
+export const createTodo = async (data: Data) => {
   try {
-    const response = await axios.post(endpoint, data, {
-      headers: { Authorization: `${token}` },
-    });
+    const response = await api.post(endpoint, data);
     return response.data;
   } catch (error: any) {
     throw new Error(error.message);
   }
 };
-
-export const put = async ( data: Data) => {
+//put
+export const putTodo = async (id: string | undefined, data: Data) => {
   try {
-    const response = await axios.put(endpoint, data, {
-      headers: { Authorization: `${token}` },
-    });
+    const response = await api.put(`${endpoint}/${id}`, data);
     return response.data;
   } catch (error: any) {
     throw new Error(error.message);
   }
 };
-
-export const del = async () => {
+//delete
+export const deleteTodo = async (id: string | undefined) => {
   try {
-    const response = await axios.delete(endpoint, {
-      headers: { Authorization: `${token}` },
-    });
+    const response = await api.delete(`${endpoint}/${id}`);
     return response.data;
   } catch (error: any) {
     throw new Error(error.message);

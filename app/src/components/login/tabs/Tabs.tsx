@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { Box, Container } from "../../common-styled";
-import { TabBox, ContentBox, Tab } from "../login-styled";
+import { TabBox, ContentBox, Tab } from "../style/login-styled";
 import useTabs from "../../../hooks/useTabs";
-import { TabsArr } from './TabsArr';
+import { TabsArr } from "./TabsArr";
 
 const TabsAuth = () => {
   const { tabNum, changeTabs } = useTabs();
-  
 
   return (
     <Container>

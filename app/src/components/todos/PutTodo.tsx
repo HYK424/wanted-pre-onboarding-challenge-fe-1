@@ -6,10 +6,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setList } from "./todoSlice";
-import { ContentInput, TitleInput } from "./todos-styled";
+import { setList } from "./slice/todoSlice";
+import { ContentInput, TitleInput } from "./style/todos-styled";
 import { useForm } from "react-hook-form";
-import { get, put } from "../../Api";
+import { getTodo, putTodo } from "../../Api";
 const PutTodo = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,13 +18,13 @@ const PutTodo = () => {
   const { register, watch } = useForm({ mode: "onChange" });
 
   const handleSubmit = async () => {
-    const data: Data = {
+    const Todo: Data = {
       title: watch("title"),
       content: watch("content"),
     };
     const token = localStorage.getItem("login");
-    await put( data);
-    const res = await get();
+    await putTodo(id, Todo);
+    const res = await getTodo();
     dispatch(setList(res.data));
     navigate("/");
   };
