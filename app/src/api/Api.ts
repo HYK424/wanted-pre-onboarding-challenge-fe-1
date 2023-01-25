@@ -1,6 +1,6 @@
 import axios from "axios";
-import api from "./lib/axios";
-import { Data } from "./type/todoType";
+import api from "../lib/axios";
+import { Data } from "../type/todoType";
 
 const endpoint = `/todos`;
 //get

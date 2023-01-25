@@ -4,26 +4,36 @@ import { RootState } from "../../store/store";
 import { setList, setTodo } from "./slice/todoSlice";
 import { useNavigate } from "react-router-dom";
 import { TodoData } from "../../type/todoType";
-import { deleteTodo, getTodo, getTodoById } from "../../Api";
+import { deleteTodo, getTodo, getTodoById } from "../../api/Api";
+import { useQuery } from "react-query";
+import { useGetTodoList } from "../../api/query/todoQuery";
 
 const Todos = () => {
   const todoList = useSelector((state: RootState) => state.todoSlice.list);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getTodoList();
-  }, []);
+  // useEffect(() => {
+  //   getTodoList();
+  // }, []);
 
   const getTodoList = async () => {
     const res = await getTodo();
     dispatch(setList(res.data));
+    return res;
   };
+
+
+const {todoListArr, isError, isLoading}=useGetTodoList()
+
+  if (isLoading) return <h3>로딩중..</h3>;
+  if (isError) return <h3>에러 발생</h3>;
 
   const handleDelete = async (id: string) => {
     await deleteTodo(id);
     const res = await getTodo();
     dispatch(setList(res.data));
+    return res;
   };
 
   const handlePut = async (id: string) => {
@@ -34,7 +44,7 @@ const Todos = () => {
 
   return (
     <div>
-      {todoList.map((item: TodoData) => {
+      {todoListArr.map((item: TodoData) => {
         return (
           <div key={item.id} style={{ display: "flex" }}>
             <p>{item.title}</p>

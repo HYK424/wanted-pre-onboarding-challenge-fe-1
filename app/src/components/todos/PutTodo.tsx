@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { setList } from "./slice/todoSlice";
 import { ContentInput, TitleInput } from "./style/todos-styled";
 import { useForm } from "react-hook-form";
-import { getTodo, putTodo } from "../../Api";
+import { getTodo, putTodo } from "../../api/Api";
 const PutTodo = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
