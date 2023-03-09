@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TabsAuth from "../components/login/tabs/Tabs";
 import TT from "./TT";
 
 test("renders", () => {

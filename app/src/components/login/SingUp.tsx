@@ -1,7 +1,6 @@
-import React from "react";
 import { FieldErrors, FieldValues, useForm } from "react-hook-form";
 import { LoginForm, LoginInput } from "./style/login-styled";
-import axios from "axios";
+import { createUser } from "../../api/Api";
 const SignUp = () => {
   const {
     register,
@@ -11,7 +10,7 @@ const SignUp = () => {
 
   const onValid = async (data: FieldValues) => {
     try {
-      const res = await axios.post("http://localhost:8080/users/create", data);
+      const res = await createUser(data);
       localStorage.setItem("login", res.data.token);
       alert("회원가입이 완료되었습니다");
     } catch (err) {
@@ -35,7 +34,7 @@ const SignUp = () => {
         {...register("email", {
           required: "Email을 입력해 주세요",
           pattern: {
-            value: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+            value: /^[a-zA-Z0-9+-.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
             message: "Email형식에 맞춰서 입력해 주세요",
           },
         })}

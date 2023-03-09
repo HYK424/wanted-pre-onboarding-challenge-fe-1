@@ -1,4 +1,3 @@
-import axios from "axios";
 import api from "../lib/axios";
 import { Data } from "../type/todoType";
 
@@ -44,6 +43,24 @@ export const deleteTodo = async (id: string | undefined) => {
   try {
     const response = await api.delete(`${endpoint}/${id}`);
     return response.data;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const login = async (data: any) => {
+  try {
+    const response = await api.post(`/users/login`, data);
+    return response;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+export const createUser = async (data: any) => {
+  try {
+    const response = await api.post(`/users/create`, data);
+    return response;
   } catch (error: any) {
     throw new Error(error.message);
   }

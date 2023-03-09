@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Box, Container } from "../../common-styled";
 import { TabBox, ContentBox, Tab } from "../style/login-styled";
 import useTabs from "../../../hooks/useTabs";
