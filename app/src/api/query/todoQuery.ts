@@ -4,15 +4,14 @@ import { queryKey } from "./queryKey";
 
 export const useGetTodoList = () => {
   const { data, isError, isLoading } = useQuery(queryKey.getTodoList, getTodo, {
-    staleTime: 5000,
+    staleTime: 8000,
     cacheTime: 25000,
-    retry: 1,
+    retry: 2,
   });
-  
 
-return {
+  return {
     todoListArr: data?.data,
     isError: isError,
-    isLoading: isLoading
-}
+    isLoading: isLoading,
+  };
 };

@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/api/Api.ts"]
+  "include": ["src", "src/api/Api.ts", "src/test", "jest.config.js"]
 }

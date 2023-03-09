@@ -24,7 +24,8 @@ const Todos = () => {
   };
 
 
-const {todoListArr, isError, isLoading}=useGetTodoList()
+const {todoListArr, isError, isLoading}=useGetTodoList();
+console.log('/put 에서 이미 실행됨',todoListArr);
 
   if (isLoading) return <h3>로딩중..</h3>;
   if (isError) return <h3>에러 발생</h3>;
@@ -48,7 +49,6 @@ const {todoListArr, isError, isLoading}=useGetTodoList()
         return (
           <div key={item.id} style={{ display: "flex" }}>
             <p>{item.title}</p>
-
             <button
               type="button"
               onClick={() => {
