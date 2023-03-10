@@ -1,13 +1,10 @@
 import { Header, TitleInput, ContentInput } from "./style/todos-styled";
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setList } from "./slice/todoSlice";
 import { useNavigate } from "react-router-dom";
 import { getTodo, createTodo } from "../../api/Api";
 import { token } from "../../lib/token";
-
-import { useEffect } from "react";
 
 const PostTodo = () => {
   const { register, watch } = useForm({ mode: "onChange" });

@@ -10,7 +10,6 @@ const TabsAuth = () => {
     <Container>
       <Box>
         <TabBox>
-          test
           {TabsArr.map((tab, i) => {
             return (
               <Tab
